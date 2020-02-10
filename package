@@ -1,0 +1,66 @@
+/*
+3) Реализуйте метод который выведет
+на экран список всех каталогов 
+которые «лежат»  в каталоге который 
+будет параметром этого метода. 
+*/
+
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.Writer;
+
+public class Array {
+	static public void inPackage(File file) { 
+		if(file.isDirectory()) {
+			String[] str = file.list();
+			for (int i = 0; i < str.length; i++) {
+				System.out.println(str[i]);
+			}
+		}
+	}
+
+	public static void main(String[] args) {
+		File bigPackage = new File("Big Package");
+		bigPackage.mkdir();
+		try {
+			bigPackage.createNewFile();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		File package1 = new File(bigPackage.getAbsolutePath() + "/" + "Package 1");
+		package1.mkdir();
+		try {
+			package1.createNewFile();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		File package2 = new File(bigPackage.getAbsolutePath()+ "/" + "Package 2");
+		package2.mkdir();
+		try {
+			package2.createNewFile();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		File package3 = new File(bigPackage.getAbsolutePath() + "/" + "Package 3");
+		package3.mkdir();
+		try {
+			package3.createNewFile();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		File package4 = new File(bigPackage.getAbsolutePath() + "/" + "Package 4");
+		try {
+		package4.createNewFile();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		inPackage(bigPackage);
+
+	}
+
+}
